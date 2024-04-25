@@ -27,3 +27,6 @@ h1, h2{
     flex-direction: column;
     gap: 10px;
 }
+#tablero .casilla-max {
+    background-color: yellow;
+}

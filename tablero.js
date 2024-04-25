@@ -77,7 +77,10 @@ for (let i = 0; i < tam; i++) {
         const rowComputadora = tableroV[colComputadora].indexOf(0);
         tableroM[colComputadora][rowComputadora] = "A";
         casillaComputadora.innerText = "A";
+        console.log("Agregando clase casilla-max a la casilla de la computadora");
         casillaComputadora.classList.add("casilla-max"); // Agregamos la clase para cambiar el color de fondo
+        casillaComputadora.style.backgroundColor = "yellow";
+
         const updatedColArrComputadora = tableroV[colComputadora].map((item) => (item -= 1));
         tableroV[colComputadora] = updatedColArrComputadora;
     
