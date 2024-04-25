@@ -1,5 +1,5 @@
 const body = document.body;
-const profundidadMaxima = 5; // Definir la profundidad máxima de búsqueda
+//const profundidadMaxima = 8; // Definir la profundidad máxima de búsqueda
 
 
 const tam = 7;
@@ -13,6 +13,32 @@ turnoInd.innerText = "MAX";
 
 // Copia del tablero
 const tableroM = [];
+
+// Obtener el elemento de entrada de la profundidad y el botón de inicio
+const inputProfundidad = document.getElementById("profundidad");
+const btnIniciarJuego = document.getElementById("iniciarJuego");
+
+// Agregar un evento de clic al botón de inicio
+btnIniciarJuego.addEventListener("click", iniciarJuego);
+
+// Función para iniciar el juego con la profundidad seleccionada por el jugador
+function iniciarJuego() {
+    // Obtener la profundidad seleccionada por el jugador
+    const profundidad = parseInt(inputProfundidad.value);
+
+    // Verificar si la profundidad es válida
+    if (profundidad >= 1 && profundidad <= 8) {
+        // Iniciar el juego con la profundidad seleccionada
+        profundidadMaxima = profundidad;
+        reiniciarJuego(); // Reiniciar el juego con la nueva profundidad
+    } else {
+        alert("La profundidad de búsqueda debe estar entre 1 y 8.");
+    }
+}
+
+
+
+
 
 for (let i = 0; i < tam; i++) {
   tableroV[i] = [];
@@ -266,6 +292,7 @@ function evaluarTablero(tablero, jugador) {
   let evaluacion = cant3EnLineaMias + cant2EnLineaMias + cant1EnLineaMias -
                      cant3EnLineaContrario - cant2EnLineaContrario - cant1EnLineaContrario;
 
+                     console.log(evaluacion)
   // Agregar un componente aleatorio a la evaluación final
   evaluacion += Math.random() * 0.1; // Ajusta el valor para controlar la cantidad de aleatoriedad
 
