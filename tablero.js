@@ -227,8 +227,9 @@ body.append(tablero);
 
 
 
-/*
+
 //FUNCION DE EVALUACIÓN 
+/*
 function evaluarTablero(tablero, jugador) {
     const oponente = jugador === 'R' ? 'A' : 'R';
 
@@ -247,6 +248,30 @@ function evaluarTablero(tablero, jugador) {
 
     return evaluacion;
 }
+*/
+
+function evaluarTablero(tablero, jugador) {
+  const oponente = jugador === 'R' ? 'A' : 'R';
+
+  // Calcular la cantidad de fichas en línea para el jugador y el oponente
+  const cant3EnLineaMias = contarFichasEnLinea(tablero, jugador, 3);
+  const cant2EnLineaMias = contarFichasEnLinea(tablero, jugador, 2);
+  const cant1EnLineaMias = contarFichasEnLinea(tablero, jugador, 1);
+
+  const cant3EnLineaContrario = contarFichasEnLinea(tablero, oponente, 3);
+  const cant2EnLineaContrario = contarFichasEnLinea(tablero, oponente, 2);
+  const cant1EnLineaContrario = contarFichasEnLinea(tablero, oponente, 1);
+
+  // Calcular la evaluación según la fórmula proporcionada
+  let evaluacion = cant3EnLineaMias + cant2EnLineaMias + cant1EnLineaMias -
+                     cant3EnLineaContrario - cant2EnLineaContrario - cant1EnLineaContrario;
+
+  // Agregar un componente aleatorio a la evaluación final
+  evaluacion += Math.random() * 0.1; // Ajusta el valor para controlar la cantidad de aleatoriedad
+
+  return evaluacion;
+}
+
 
 function contarFichasEnLinea(tablero, jugador, cantidad) {
     let count = 0;
@@ -302,12 +327,13 @@ function contarFichasEnLinea(tablero, jugador, cantidad) {
 
     return count;
 }
-*/
+
+/*
 function evaluarTablero(tablero, jugador) {
     // Generar un valor aleatorio entre 0 y 1000
     return Math.floor(Math.random() * 1001);
 }
-
+*/
 
 
 /*MINMAX */
